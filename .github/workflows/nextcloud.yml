@@ -1,0 +1,20 @@
+name: Nextcloud Artifact
+on:
+  push:
+    branches:
+      - upload-deployment
+jobs:
+  build-test:
+    name: Upload Files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3                               # checkout the repo
+
+      - name: Nextcloud Artifact
+        uses: trympet/nextcloud-artifacts-action@v2
+        with:
+          name: 'upload-demo'                                   # Name of the artifact
+          path: './upload.zip'                                  # Globbing supported
+          nextcloud-url: 'https://file.cdmteck.com'             # Nextcloud URL
+          nextcloud-username: ${{ secrets.NEXTCLOUD_USERNAME }} # Username from repository secret
+          nextcloud-password: ${{ secrets.NEXTCLOUD_PASSWORD }} # Password from repository secret
