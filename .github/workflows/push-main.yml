@@ -1,4 +1,4 @@
-name: Scheduler
+name: Push Main
 on:
   push:
     branches:
