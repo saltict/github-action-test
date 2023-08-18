@@ -7,7 +7,7 @@ on:
 jobs:
   master:
     runs-on: ubuntu-22.04
-    name: Scheduler
+    name: Main Features
     steps:
       - uses: actions/checkout@v3
         with:
