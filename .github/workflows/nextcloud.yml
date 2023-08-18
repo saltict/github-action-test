@@ -2,7 +2,7 @@ name: Nextcloud Artifact
 on:
   push:
     branches:
-      - upload-deployment
+      - upload-deployment-nextcloud
 jobs:
   build-test:
     name: Upload Files

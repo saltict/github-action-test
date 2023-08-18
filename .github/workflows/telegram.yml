@@ -1,0 +1,26 @@
+name: Nextcloud Artifact
+on:
+  push:
+    branches:
+      - upload-deployment
+jobs:
+  build-test:
+    name: Upload Files
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3                               # checkout the repo
+
+      - name: Upload to telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+
+            Repository: ${{ github.repository }}
+
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          document: upload.zip
