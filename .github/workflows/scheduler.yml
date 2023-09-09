@@ -13,7 +13,6 @@ jobs:
           ref: coingecko
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
-          branch: main
       - name: Update data
         run: |
           yarn install --immutable | grep -v 'YN0013'
