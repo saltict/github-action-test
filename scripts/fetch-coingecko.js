@@ -14,7 +14,7 @@ async function fetchCoinGeckoData() {
     const data = await response.json();
 
     // Save the data to price.json
-    await fs.writeFile('../data/price.json', JSON.stringify(data, null, 2));
+    await fs.writeFile('data/price.json', JSON.stringify(data, null, 2));
 
     console.log(`Fetched and saved data for the top 100 cryptocurrencies to price.json.`);
   } catch (error) {
