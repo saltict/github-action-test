@@ -6,6 +6,12 @@
   "author": "AnhMTV <maithachvietanh@gmail.com>",
   "license": "MIT",
   "private": false,
+  "type": "module",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "node-fetch": "^3.3.2"
+  },
+  "scripts": {
+    "data:update-price": "node ./scripts/fetch-coingecko.js"
+  }
 }

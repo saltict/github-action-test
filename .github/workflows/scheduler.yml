@@ -1,16 +1,26 @@
 name: Scheduler
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 * * * *'
 
 jobs:
   master:
     runs-on: ubuntu-22.04
     name: Scheduler
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
+          ref: coingecko
           fetch-depth: 0
-      - name: Echo
+          token: ${{ secrets.GH_PAT }}
+          branch: main
+      - name: Update data
         run: |
-          echo "Running Scheduler"
+          yarn install --immutable | grep -v 'YN0013'
+          yarn data:update-price
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Scheduler
+          author_email: scheduler@github.io
+          message: 'Update data'
