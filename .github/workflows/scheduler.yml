@@ -12,7 +12,7 @@ jobs:
         with:
           ref: coingecko
           fetch-depth: 0
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GH_TOKEN }}
           branch: main
       - name: Update data
         run: |
